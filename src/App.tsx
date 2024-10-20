@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ConfigProvider } from "antd";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomeView from "./views/HomeView";
+import { themeToken } from "./_shared/antTheme/antThemeToken";
+import { HomeView } from "./views/HomeView";
 
 const router = createBrowserRouter([
   {
@@ -11,12 +13,14 @@ const router = createBrowserRouter([
 
 const queryClient = new QueryClient();
 
-function App() {
+const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ConfigProvider theme={themeToken}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </ConfigProvider>
   );
-}
+};
 
 export default App;

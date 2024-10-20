@@ -1,0 +1,28 @@
+.completed {
+  background: var(--flex-completed-color);
+}
+
+.onhold {
+  background: var(--flex-onhold-color);
+}
+
+.onroad {
+  background: var(--flex-onroad-color);
+}
+
+.inprogress {
+  background: var(--flex-inprogress-color);
+}
+
+.box {
+  align-items: center;
+  border-radius: var(--flex-radius-sm);
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.6ch;
+  max-height: 104px;
+  font-weight: 600;
+  width: 100%;
+}

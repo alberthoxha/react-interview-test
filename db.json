@@ -1,29 +1,50 @@
 {
-  "posts": [
+  "jobs": [
     {
       "id": "1",
-      "title": "a title",
-      "views": 100
+      "title": "1658 E 23rd St, Brooklyn, NY 11229, USA",
+      "status": "onhold",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold",
+        "Shoring"
+      ]
     },
     {
       "id": "2",
-      "title": "another title",
-      "views": 200
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
+      "title": "1705 E 22nd St, Brooklyn, NY 11229, USA",
+      "status": "completed",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
     },
     {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": "3",
+      "title": "47 Lake St, Brooklyn, NY 11223, USA",
+      "status": "onroad",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "256 Bay 19th St, Brooklyn, NY 11214, USA",
+      "status": "onroad",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "256 Bay 19th St, Brooklyn, NY 11214, USA",
+      "status": "onroad",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -1,12 +1,12 @@
-import { IStatus, IStatusIndicator } from "../../../_shared/types";
+import { IStatusIndicator } from "../../../_shared/types";
 import styles from "./StatusIndicator.module.css";
 
 interface IProps {
   status: IStatusIndicator;
-  itemLength?: IStatus;
+  children: React.ReactNode;
 }
 
-export const StatusIndicator = ({ status, itemLength }: IProps) => {
+export const StatusIndicator = ({ children, status }: IProps) => {
   function colorByStatus() {
     if (status === "completed") return styles.completed;
     if (status === "onroad") return styles.onroad;
@@ -14,16 +14,5 @@ export const StatusIndicator = ({ status, itemLength }: IProps) => {
     if (status === "inprogress") return styles.inprogress;
   }
 
-  function displayName() {
-    if (status === "completed") return "Completed";
-    if (status === "onroad") return "On Road";
-    if (status === "onhold") return "On Hold";
-    if (status === "inprogress") return "In Progress";
-  }
-
-  return (
-    <div className={`${colorByStatus()} ${styles.box}`}>
-      {`${itemLength ? itemLength.status.length : ""} ${displayName()}`}
-    </div>
-  );
+  return <div className={`${colorByStatus()} ${styles.box}`}>{children}</div>;
 };

@@ -23,6 +23,8 @@
   --flex-bg-red:active:#FE4C4A;
   
   --flex-bg-white: #f4f5f6;
+
+  --flex-shadow-md: rgba(0, 0, 0, 0.25) 0px 1px 4px;
  
   --flex-radius-sm: 5px;
   --flex-radius-md: 10px;

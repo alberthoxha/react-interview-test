@@ -1,0 +1,36 @@
+.container {
+  border-radius: var(--flex-radius-md);
+  background: #ffff;
+  box-shadow: var(--flex-shadow-md);
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.titleHeader {
+  padding: 11px 20px;
+  background: #f8f8fa;
+  margin: 0;
+}
+
+.infoSearchContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.searchButtonContainer {
+  width: 40%;
+  display: flex;
+  gap: 20px;
+}
+
+.tooltipContainer {
+  display: flex;
+  align-item: center;
+  gap: 12px;
+  width: 520px;
+
+  p {
+    margin: 3px 0 0 0;
+  }
+}

@@ -13,19 +13,16 @@
   --flex-onhold-color: #fe4c4a;
   --flex-inprogress-color: #b3d99b;
 
-  --flex-bg-green: #68C142
-  --flex-bg-green:active: #71CF48
+  --flex-bg-green: #68c142;
 
-  --flex-bg-blue:#0F5C97;
-  --flex-bg-blue:active:#1264A3;
+  --flex-bg-blue: #0f5c97;
 
-  --flex-bg-red:#EB4345;
-  --flex-bg-red:active:#FE4C4A;
-  
+  --flex-bg-red: #eb4345;
+
   --flex-bg-white: #f4f5f6;
 
   --flex-shadow-md: rgba(0, 0, 0, 0.25) 0px 1px 4px;
- 
+
   --flex-radius-sm: 5px;
   --flex-radius-md: 10px;
 }

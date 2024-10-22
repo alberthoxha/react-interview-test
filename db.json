@@ -31,7 +31,7 @@
     {
       "id": "4",
       "title": "256 Bay 19th St, Brooklyn, NY 11214, USA",
-      "status": "onroad",
+      "status": "inprogress",
       "categories": [
         "Sidewalk Shed",
         "Shoring"
@@ -39,10 +39,138 @@
     },
     {
       "id": "5",
-      "title": "256 Bay 19th St, Brooklyn, NY 11214, USA",
+      "title": "6908 13th Ave, Brooklyn, NY 11228, USA",
+      "status": "onhold",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "1329 56th St, Brooklyn, NY 11219, USA",
+      "status": "completed",
+      "categories": [
+        "Scaffold",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "588 Lenox Rd, Brooklyn, NY 11203, USA",
       "status": "onroad",
       "categories": [
         "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "200 Newport St, Brooklyn, NY 11212, USA",
+      "status": "inprogress",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "158-39 99th St, Queens, NY 11414, USA",
+      "status": "onroad",
+      "categories": [
+        "Scaffold",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "86-04 Shore Pkwy, Jamaica, NY 11414, USA",
+      "status": "onhold",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "95-01 Linden Blvd, Jamaica, NY 11417, USA",
+      "status": "completed",
+      "categories": [
+        "Sidewalk Shed",
+        "Scaffold"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "123 Main St, Brooklyn, NY 11211, USA",
+      "status": "onroad",
+      "categories": [
+        "Scaffold",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "456 Elm St, Brooklyn, NY 11212, USA",
+      "status": "inprogress",
+      "categories": [
+        "Sidewalk Shed"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "789 Pine St, Brooklyn, NY 11215, USA",
+      "status": "completed",
+      "categories": [
+        "Scaffold"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "321 Oak St, Queens, NY 11418, USA",
+      "status": "onhold",
+      "categories": [
+        "Sidewalk Shed",
+        "Shoring"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "654 Maple St, Brooklyn, NY 11220, USA",
+      "status": "onroad",
+      "categories": [
+        "Scaffold"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "987 Cedar St, Brooklyn, NY 11228, USA",
+      "status": "inprogress",
+      "categories": [
+        "Shoring"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "135 Birch St, Jamaica, NY 11421, USA",
+      "status": "completed",
+      "categories": [
+        "Sidewalk Shed"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "246 Walnut St, Queens, NY 11415, USA",
+      "status": "onhold",
+      "categories": [
+        "Scaffold"
+      ]
+    },
+    {
+      "id": "20",
+      "title": "357 Spruce St, Brooklyn, NY 11226, USA",
+      "status": "onroad",
+      "categories": [
         "Shoring"
       ]
     }

@@ -14,15 +14,29 @@
   background: var(--flex-inprogress-color);
 }
 
-.box {
+.card {
   align-items: center;
   border-radius: var(--flex-radius-sm);
   color: white;
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 3ch;
+  font-size: 30px;
   height: 100%;
   font-weight: 600;
   width: 100%;
+}
+
+.tag {
+  align-items: center;
+  border-radius: var(--flex-radius-sm);
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  height: 100%;
+  width: 129px;
+  font-weight: 400;
+  padding: 5px 24px;
 }

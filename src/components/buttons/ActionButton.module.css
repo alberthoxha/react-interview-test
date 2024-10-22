@@ -1,0 +1,54 @@
+.create {
+  background: var(--flex-bg-green);
+}
+
+.cancel {
+  background: var(--flex-bg-red);
+}
+
+.navigate {
+  background: var(--flex-bg-blue);
+}
+
+.button {
+  height: 32px;
+  border-radius: var(--flex-radius-sm);
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px 0 10px;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+.textInside {
+  min-width: 116px;
+}
+
+.button:active {
+  opacity: 100%;
+}
+
+.button:hover {
+  opacity: 90%;
+}
+
+.verticalLine {
+  opacity: 10%;
+  background: black;
+  width: 1.4px;
+  height: 100%;
+  margin: 0 8px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 35px;
+}

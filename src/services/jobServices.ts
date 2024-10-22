@@ -3,9 +3,13 @@ import type { Jobs } from "../_shared/types";
 
 const API_URL = "http://localhost:3000";
 
-export const getJobs = async (): Promise<Jobs[]> => {
+export const getJobs = async (
+  searchParam: string | unknown
+): Promise<Jobs[]> => {
   try {
-    const response: AxiosResponse<Jobs[]> = await axios.get(`${API_URL}/jobs`);
+    const response: AxiosResponse<Jobs[]> = await axios.get(
+      `${API_URL}/jobs?title_like=${searchParam}`
+    );
     return response.data;
   } catch (error) {
     throw new Error(`Error fetching jobs: ${error}`);

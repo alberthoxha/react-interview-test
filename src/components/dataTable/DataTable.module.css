@@ -21,16 +21,6 @@
 .searchButtonContainer {
   width: 40%;
   display: flex;
+  height: 32px;
   gap: 20px;
-}
-
-.tooltipContainer {
-  display: flex;
-  align-item: center;
-  gap: 12px;
-  width: 520px;
-
-  p {
-    margin: 3px 0 0 0;
-  }
 }

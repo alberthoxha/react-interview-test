@@ -1,0 +1,53 @@
+.inputContainer {
+  width: 535px;
+  cursor: pointer;
+}
+
+.insideInput {
+  height: 32px;
+  background: var(--flex-bg-light-gray);
+  borderradius: var(--flex-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.insideInputAlign {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.circleIndentatorStatus {
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+}
+
+.selectedBoxList {
+  width: 535px;
+  margin-left: 2px;
+  margin-top: 3px;
+  box-shadow: var(--flex-shadow-md);
+  overflow: auto;
+  border-radius: 0 0 var(--flex-radius-sm) var(--flex-radius-sm);
+}
+
+.selectedBoxListItem {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.addedCategoryList {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.addedCategoryItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

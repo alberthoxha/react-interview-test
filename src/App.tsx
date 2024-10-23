@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConfigProvider } from "antd";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { themeToken } from "./_shared/antTheme/antThemeToken";
-import { HomeView } from "./views/homeView/HomeView";
+import { HomeView } from "./views/HomeView";
 
 const router = createBrowserRouter([
   {

@@ -12,15 +12,16 @@
   --flex-completed-color: #7ac14d;
   --flex-onhold-color: #fe4c4a;
   --flex-inprogress-color: #b3d99b;
+  --flex-inprogress-color: #b3d99b;
 
   --flex-bg-green: #68c142;
-
   --flex-bg-blue: #0f5c97;
+  --flex-bg-purple: #9640be;
 
   --flex-bg-red: #eb4345;
 
   --flex-bg-white: #f4f5f6;
-
+  --flex-bg-light-gray: #f5f5f7;
   --flex-shadow-md: rgba(0, 0, 0, 0.25) 0px 1px 4px;
 
   --flex-radius-sm: 5px;
@@ -29,4 +30,48 @@
 
 body {
   background: var(--flex-bg-white);
+}
+label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+p {
+  margin: 0;
+}
+.completed-color {
+  background: var(--flex-completed-color);
+}
+
+.onhold-color {
+  background: var(--flex-onhold-color);
+}
+
+.onroad-color {
+  background: var(--flex-onroad-color);
+}
+
+.inprogress-color {
+  background: var(--flex-inprogress-color);
+}
+
+.side-walk-sheed-color {
+  background: #67aa3c;
+  color: #ffff;
+}
+
+.scaffold-color {
+  background: #efd652;
+  color: #ffff;
+}
+
+.shoring-color {
+  background: #9640be;
+  color: #ffff;
+}
+
+/* Ant design */
+.ant-input {
+  /* border: none !important; */
 }

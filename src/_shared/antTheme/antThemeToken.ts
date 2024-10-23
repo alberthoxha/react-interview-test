@@ -8,4 +8,9 @@ export const themeToken = {
     fontSize: 14,
     borderRadius: 5,
   },
+  components: {
+    Input: {
+      colorBgContainer: "#F5F5F7",
+    },
+  },
 };

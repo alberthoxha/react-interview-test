@@ -1,0 +1,30 @@
+.form {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.modalButtonsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  gap: 20px;
+}
+
+.tooltipContainer {
+  display: flex;
+  align-item: center;
+  gap: 12px;
+  width: 520px;
+  margin-bottom: 10px;
+
+  p {
+    margin: 3px 0 0 0;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}

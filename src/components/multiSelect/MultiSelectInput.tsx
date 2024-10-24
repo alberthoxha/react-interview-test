@@ -76,9 +76,9 @@ const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
         {value.map((item) => (
           <div className={styles.addedCategoryItem} key={item}>
             <div
-              className={`${colorByCategory(item)} ${
-                styles.circleIndentatorStatus
-              }`}
+              className={`
+                ${colorByCategory(item)}
+                ${styles.circleIndentatorStatus}`}
             />
             <p>{item}</p>
             <AiFillCloseSquare

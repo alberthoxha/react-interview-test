@@ -1,28 +1,31 @@
-import { Input, Table, TableColumnsType, Tooltip } from "antd";
-import { useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Input, Spin, Table, TableColumnsType, Tooltip } from "antd";
+import { useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdInformationCircle } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import { IStatusIndicator, Jobs } from "../../_shared/types";
 import { statusTitleFormat } from "../../utils/status";
 import { StatusIndicator } from "../_ui/statusIndicator/StatusIndicator";
 import { ActionButton } from "../buttons/ActionButton";
 import { JobModalForm } from "../jobModalForm/JobModalForm";
 import styles from "./DataTable.module.css";
+import useDebounce from "../../hooks/useDebounce";
 
-const columns: TableColumnsType = [
+const columns: TableColumnsType<Jobs> = [
   {
     title: "Jobsite Name",
     dataIndex: "title",
-    key: "2",
+    key: "title",
     align: "center",
   },
   {
     title: "Status",
     dataIndex: "status",
-    key: "3",
-    render: (text: IStatusIndicator) => (
-      <StatusIndicator key="3" status={text} type="tag">
-        {statusTitleFormat(text)}
+    key: "status",
+    render: (status: IStatusIndicator) => (
+      <StatusIndicator status={status} type="tag">
+        {statusTitleFormat(status)}
       </StatusIndicator>
     ),
   },
@@ -30,19 +33,26 @@ const columns: TableColumnsType = [
 
 interface IProps {
   data: Jobs[] | undefined;
-  search: string;
+  isPending: boolean;
   setSearch: (param: string) => void;
 }
 
-export const DataTable = ({ data, search, setSearch }: IProps) => {
+export const DataTable = ({ data = [], setSearch, isPending }: IProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchParam, setSearchParam] = useState("");
+  const navigate = useNavigate();
+  const debouncedSearch = useDebounce(searchParam, 500);
+
+  useEffect(() => {
+    setSearch(debouncedSearch);
+  }, [debouncedSearch]);
 
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(event.target.value);
+    setSearchParam(event.target.value);
   }
 
-  function handleRoute(param: string) {
-    console.log(param);
+  function handleRoute(id: string) {
+    navigate(`inventory/${id}`);
   }
 
   return (
@@ -50,22 +60,21 @@ export const DataTable = ({ data, search, setSearch }: IProps) => {
       <p className={styles.titleHeader}>Jobs List</p>
       <div className={styles.infoSearchContainer}>
         <div className={styles.tooltipContainer}>
-          <Tooltip title="This tootlip message contain information about table">
+          <Tooltip title="This tooltip message contains information about the table">
             <IoMdInformationCircle color={"var(--flex-bg-blue)"} size={30} />
           </Tooltip>
           <p>
             Informative piece of text that can be used regarding this modal.
-            <h1>{status}</h1>
           </p>
         </div>
         <div className={styles.searchButtonContainer}>
           <Input
             type="text"
             id="search"
-            placeholder="Search a driver"
+            placeholder="Search a job"
             size="small"
             prefix={<FaMagnifyingGlass style={{ color: "#c7c7c7" }} />}
-            value={search}
+            value={searchParam}
             onChange={handleSearch}
           />
           <ActionButton onClick={() => setIsModalOpen(true)} action="create">
@@ -74,20 +83,28 @@ export const DataTable = ({ data, search, setSearch }: IProps) => {
         </div>
       </div>
 
-      <Table
-        pagination={false}
-        scroll={{ y: 600 }}
-        size="small"
-        onRow={(row) => {
-          return {
-            onClick: () => {
-              handleRoute(row.id);
-            },
-          };
-        }}
-        dataSource={data}
-        columns={columns}
-      ></Table>
+      {isPending ? (
+        <Spin
+          indicator={<LoadingOutlined spin />}
+          size="large"
+          style={{
+            width: "100%",
+            height: "500px",
+          }}
+        />
+      ) : (
+        <Table
+          pagination={false}
+          scroll={{ y: 135 * 5 }}
+          size="small"
+          onRow={({ id }) => ({
+            onClick: () => handleRoute(id!),
+          })}
+          dataSource={data}
+          columns={columns}
+          rowKey="id"
+        />
+      )}
 
       <JobModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </div>

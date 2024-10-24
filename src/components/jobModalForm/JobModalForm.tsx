@@ -1,21 +1,23 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Input, message, Modal, Tooltip } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoMdInformationCircle } from "react-icons/io";
+import { Jobs } from "../../_shared/types";
+import { createJob, updateJob } from "../../services/jobServices";
 import { ErrorFieldMessage } from "../_ui/errorField/ErrorFieldMessage";
 import { ActionButton } from "../buttons/ActionButton";
 import MultiSelectInput from "../multiSelect/MultiSelectInput";
 import SelectInput from "../select/SelectInput";
 import styles from "./JobModalForm.module.css";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createJob } from "../../services/jobServices";
-import { Jobs } from "../../_shared/types";
 
 interface IProps {
   isModalOpen: boolean;
   setIsModalOpen: (setIsModalOpen: boolean) => void;
+  data?: Jobs;
+  id?: string;
 }
 
-export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
+export const JobModalForm = ({ isModalOpen, setIsModalOpen, data }: IProps) => {
   const [status, setStatus] = useState("");
   const [title, setTitle] = useState<string>("");
   const [categories, setCategories] = useState<string[]>([]);
@@ -39,7 +41,7 @@ export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
     return isTitleValid && isStatusValid && isCategoriesValid;
   }
 
-  const mutatuin = useMutation({
+  const createMutation = useMutation({
     mutationFn: (data: Jobs) => createJob(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["jobs"] });
@@ -53,15 +55,34 @@ export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
     },
   });
 
+  const updateMutation = useMutation({
+    mutationFn: (data: Jobs) => updateJob(data.id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["jobs"] });
+      queryClient.invalidateQueries({ queryKey: ["job"] });
+      messageApi.open({
+        type: "success",
+        content: "Job was updated successfully",
+        style: { marginTop: "20vh" },
+      });
+      setIsModalOpen(false);
+    },
+  });
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (validate()) {
       const jobData: Jobs = {
+        id: data?.id,
         title,
         status,
         categories,
       };
-      mutatuin.mutate(jobData);
+      if (data) {
+        updateMutation.mutate(jobData);
+      } else {
+        createMutation.mutate(jobData);
+      }
     }
   }
 
@@ -76,7 +97,9 @@ export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
     setTitleRequired(false);
     setStatusRequired(false);
     setCategoriesRequired(false);
-    resetPreviousFields();
+    if (!data) {
+      resetPreviousFields();
+    }
   }
 
   function handleAddCategories(param: string) {
@@ -90,10 +113,18 @@ export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
     setCategories((prev) => prev.filter((item) => item !== param));
   }
 
+  useEffect(() => {
+    if (data) {
+      setTitle(data?.title);
+      setStatus(data.status);
+      setCategories(data.categories);
+    }
+  }, [data]);
+
   return (
     <Modal
       width={850}
-      title="Create new job"
+      title={data ? "Update the job" : "Create new job"}
       open={isModalOpen}
       onCancel={() => handleCloseModal()}
       footer={false}
@@ -106,7 +137,6 @@ export const JobModalForm = ({ isModalOpen, setIsModalOpen }: IProps) => {
         </Tooltip>
         <p>Informative piece of text that can be used regarding this modal.</p>
       </div>
-
       <form className={styles.form} onSubmit={handleSubmit}>
         <div>
           <label>Name</label>

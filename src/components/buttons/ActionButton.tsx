@@ -1,4 +1,4 @@
-import { FaArrowLeftLong, FaPlus, FaXmark, FaCheck } from "react-icons/fa6";
+import { FaArrowLeftLong, FaCheck, FaPlus, FaXmark } from "react-icons/fa6";
 import styles from "./ActionButton.module.css";
 
 interface IProps {

@@ -8,15 +8,23 @@ import { getJobs } from "../services/jobServices";
 export const HomeView = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { data } = useQuery<Jobs[]>({
+  const { data, isLoading } = useQuery<Jobs[]>({
     queryKey: ["jobs", searchTerm],
-    queryFn: ({ queryKey }) => getJobs(queryKey[1]),
+    queryFn: () => getJobs(searchTerm),
+    refetchInterval: 0,
+    staleTime: 0,
   });
 
   return (
     <div>
       <InfoStatusHeader data={data} />
-      <DataTable data={data} search={searchTerm} setSearch={setSearchTerm} />
+
+      <DataTable
+        data={data}
+        isPending={isLoading}
+        search={searchTerm}
+        setSearch={setSearchTerm}
+      />
     </div>
   );
 };

@@ -3,11 +3,16 @@ import { ConfigProvider } from "antd";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { themeToken } from "./_shared/antTheme/antThemeToken";
 import { HomeView } from "./views/HomeView";
+import { InventoryView } from "./views/inventoryView/InventoryView";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeView />,
+  },
+  {
+    path: "inventory/:id",
+    element: <InventoryView />,
   },
 ]);
 

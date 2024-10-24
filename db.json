@@ -2,7 +2,7 @@
   "jobs": [
     {
       "id": "1",
-      "title": "1658 E 23rd St, Brooklyn, NY 11229, USA",
+      "title": "1658 E 23rd St, Brooklyn, NY 11229, USA edited",
       "status": "onhold",
       "categories": [
         "Sidewalk Shed",
@@ -25,7 +25,10 @@
       "status": "onroad",
       "categories": [
         "Sidewalk Shed",
-        "Shoring"
+        "Shoring",
+        "side_walk_sheed",
+        "scaffold",
+        "shoring"
       ]
     },
     {

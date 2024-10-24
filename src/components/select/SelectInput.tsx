@@ -8,7 +8,7 @@ interface IProps {
   selectedItem: (param: string) => void;
 }
 
-const status = ["completed", "inprogress", "onhold", "onroad"];
+const statusOptions = ["completed", "inprogress", "onhold", "onroad"];
 
 const SelectInput = ({ value, selectedItem }: IProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -20,7 +20,7 @@ const SelectInput = ({ value, selectedItem }: IProps) => {
   }
 
   function toggleSelect() {
-    setIsSelectOpen(!isSelectOpen);
+    setIsSelectOpen((prev) => !prev);
   }
 
   useEffect(() => {
@@ -45,9 +45,9 @@ const SelectInput = ({ value, selectedItem }: IProps) => {
         {value ? (
           <div className={styles.insideInputAlign}>
             <div
-              className={`
-                ${colorByStatus(value)}
-                ${styles.circleIndentatorStatus}`}
+              className={`${colorByStatus(value)} ${
+                styles.circleIndentatorStatus
+              }`}
             />
             <p>{statusTitleFormat(value)}</p>
           </div>
@@ -63,11 +63,11 @@ const SelectInput = ({ value, selectedItem }: IProps) => {
 
       {isSelectOpen && (
         <div className={styles.selectedBoxList} ref={dropdownRef}>
-          {status.map((item) => (
+          {statusOptions.map((item) => (
             <p
-              className={`
-                ${item === value ? colorByStatus(item) : ""}
-                ${styles.selectedBoxListItem}`}
+              className={`${item === value ? colorByStatus(item) : ""} ${
+                styles.selectedBoxListItem
+              }`}
               key={item}
               onClick={() => handleSelect(item)}
             >

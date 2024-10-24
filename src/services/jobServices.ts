@@ -40,7 +40,7 @@ export const createJob = async (payload: Partial<Jobs>): Promise<Jobs> => {
 };
 
 export const updateJob = async (
-  id: string,
+  id: string | undefined,
   payload: Partial<Jobs>
 ): Promise<Jobs> => {
   try {

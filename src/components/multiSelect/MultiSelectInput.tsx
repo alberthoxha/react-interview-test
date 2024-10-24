@@ -3,11 +3,13 @@ import { FaPlay } from "react-icons/fa6";
 import { categoryTitleFormat, colorByCategory } from "../../utils/category";
 import styles from "./MultiSelectInput.module.css";
 import { AiFillCloseSquare } from "react-icons/ai";
+
 interface IProps {
   value: string[];
   addCategory: (param: string) => any;
   removeCategory: (param: string) => any;
 }
+
 const status = ["side_walk_sheed", "scaffold", "shoring"];
 
 const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
@@ -23,8 +25,8 @@ const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
     setIsSelectOpen((prev) => !prev);
   }
 
-  function singleValue(param: string): string {
-    return value.find((item) => item === param)!;
+  function singleValue(param: string): string | undefined {
+    return value.find((item) => item === param);
   }
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
   return (
     <div className={styles.inputContainer}>
       <div onClick={toggleSelect} className={styles.insideInput}>
-        <p style={{ opacity: "20%" }}>Select a categories</p>
+        <p style={{ opacity: "20%" }}>Select a category</p>
         <FaPlay
           style={{
             transform: isSelectOpen ? "rotate(90deg)" : "rotate(-90deg)",
@@ -58,9 +60,9 @@ const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
         <div ref={dropdownRef} className={styles.selectedBoxList}>
           {status.map((item) => (
             <p
-              className={`
-                ${singleValue(item) ? colorByCategory(item) : ""}
-                ${styles.selectedBoxListItem}`}
+              className={`${singleValue(item) ? colorByCategory(item) : ""} ${
+                styles.selectedBoxListItem
+              }`}
               key={item}
               onClick={() => handleSelect(item)}
             >
@@ -71,23 +73,21 @@ const SelectInput = ({ value, addCategory, removeCategory }: IProps) => {
       )}
 
       <div className={styles.addedCategoryList}>
-        {value.map((item) => {
-          return (
-            <div className={styles.addedCategoryItem}>
-              <div
-                className={`
-                ${colorByCategory(item)}
-                ${styles.circleIndentatorStatus}`}
-              />
-              <p>{item}</p>
-              <AiFillCloseSquare
-                onClick={() => removeCategory(item)}
-                size={24}
-                color="var(--flex-bg-red)"
-              />
-            </div>
-          );
-        })}
+        {value.map((item) => (
+          <div className={styles.addedCategoryItem} key={item}>
+            <div
+              className={`${colorByCategory(item)} ${
+                styles.circleIndentatorStatus
+              }`}
+            />
+            <p>{item}</p>
+            <AiFillCloseSquare
+              onClick={() => removeCategory(item)}
+              size={24}
+              color="var(--flex-bg-red)"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,112 +1,47 @@
-import { LoadingOutlined } from "@ant-design/icons";
-import { Input, Spin, Table, TableColumnsType, Tooltip } from "antd";
-import { useState } from "react";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { IoMdInformationCircle } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-import { IStatusIndicator, Jobs } from "../../_shared/types";
-import { statusTitleFormat } from "../../utils/status";
-import { StatusIndicator } from "../_ui/statusIndicator/StatusIndicator";
-import { ActionButton } from "../buttons/ActionButton";
-import { JobModalForm } from "../jobModalForm/JobModalForm";
-import styles from "./DataTable.module.css";
-import { useQuery } from "@tanstack/react-query";
-import { getJobs } from "../../services/jobServices";
-import useDebounce from "../../hooks/useDebounce"; // Adjust path accordingly
+# How to run the application
 
-const columns: TableColumnsType<Jobs> = [
-  {
-    title: "Jobsite Name",
-    dataIndex: "title",
-    key: "title",
-    align: "center",
-  },
-  {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-    render: (status: IStatusIndicator) => (
-      <StatusIndicator status={status} type="tag">
-        {statusTitleFormat(status)}
-      </StatusIndicator>
-    ),
-  },
-];
+### 1. npm run install
 
-export const DataTable = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const debouncedSearch = useDebounce(search, 400);
+To install all dependencies
 
-  const { data, isLoading } = useQuery<Jobs[]>({
-    queryKey: ["jobs", debouncedSearch],
-    queryFn: () => getJobs(debouncedSearch),
-    refetchInterval: 0,
-    staleTime: 0,
-  });
+### 2. npm run server
 
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(event.target.value);
-  }
+This command will start the server on port <http://localhost:3000/jobs> to mock api using json-server. <br/>
+visit the doc for more information: <https://github.com/typicode/json-server/tree/v0>
 
-  function handleRoute(id: string) {
-    navigate(`inventory/${id}`);
-  }
+### 3. npm run dev
 
-  return (
-    <div className={styles.container}>
-      <p className={styles.titleHeader}>Jobs List</p>
-      <div className={styles.infoSearchContainer}>
-        <div className={styles.tooltipContainer}>
-          <Tooltip title="This tooltip message contains information about the table">
-            <IoMdInformationCircle color={"var(--flex-bg-blue)"} size={30} />
-          </Tooltip>
-          <p>
-            Informative piece of text that can be used regarding this modal.
-          </p>
-        </div>
-        <div className={styles.searchButtonContainer}>
-          <Input
-            type="text"
-            id="search"
-            placeholder="Search a job"
-            size="small"
-            prefix={<FaMagnifyingGlass style={{ color: "#c7c7c7" }} />}
-            value={search}
-            onChange={handleSearch}
-          />
-          <ActionButton onClick={() => setIsModalOpen(true)} action="create">
-            Create
-          </ActionButton>
-        </div>
-      </div>
+### This command will run the client on port <http://localhost:5173/>
 
-      {isLoading ? (
-        <Spin
-          indicator={<LoadingOutlined spin />}
-          size="large"
-          style={{
-            width: "100%",
-            height: "500px",
-          }}
-        />
-      ) : (
-        <Table
-          pagination={false}
-          scroll={{ y: 135 * 5 }}
-          size="small"
-          onRow={({ id }) => ({
-            onClick: () => handleRoute(id!),
-          })}
-          dataSource={data}
-          columns={columns}
-          rowKey="id"
-        />
-      )}
+## How might you make this app more secure?
 
-      <JobModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-    </div>
-  );
-};
+#### Input Validation and Sanitization:
 
+Validate and sanitize inputs on both the client and server sides to prevent XSS and injection attacks.
+
+---
+
+## How Would You Make This React App Scale to Millions of Records?
+
+#### Optimized State Management:
+
+Use state management libraries like Redux or Zustand efficiently to handle large datasets without performance hits.
+
+#### Pagination and Infinite Scroll:
+
+Implement pagination or infinite scroll to load data in chunks rather than all at once.
+Caching:
+
+Utilize client-side caching with libraries like React Query or SWR to reduce unnecessary API calls.
+
+---
+
+![alt text](./screenshots/image.png)
+
+![alt text](./screenshots/image-1.png)
+
+![alt text](./screenshots/image-2.png)
+
+![alt text](./screenshots/image-3.png)
+
+![alt text](./screenshots/image-4.png)
